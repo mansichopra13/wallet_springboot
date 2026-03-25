@@ -27,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.wallet.annotations.TraceAndLogs;
+import com.wallet.annotations.TrackTime;
 import com.wallet.annotations.ValidCustomerId;
 import com.wallet.dto.common.ApiResponse;
 import com.wallet.dto.request.CustomerLoginDTO;
@@ -234,7 +236,8 @@ public class CustomerController {
 		Customer c1 = cs.getCustomerByEmailid(email);
 		return c1;
 	}
-	
+//	@TrackTime
+	@TraceAndLogs(action="FIND_CUSTOMER")
 	@ValidCustomerId
 	@GetMapping(value="/findcid/{cid}")
 	public Customer findcid(@PathVariable  String cid) {

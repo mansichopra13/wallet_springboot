@@ -13,6 +13,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.wallet.annotations.TraceAndLogs;
 import com.wallet.dto.request.CustomerLoginDTO;
 import com.wallet.dto.request.CustomerRequestDto;
 import com.wallet.dto.response.BulkUploadResultDTO;
@@ -292,7 +293,7 @@ public class CustomerImplements implements CustomerService{
 		Customer c = c1.get();
 		return c;
 	}
-
+	@TraceAndLogs
 	@Override
 	public Customer getCustomerByCustomerId(int customerID) {
 		Customer c1 = cr.findByCustomerid(customerID);
